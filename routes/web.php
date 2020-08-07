@@ -11,6 +11,9 @@
 |
 */
 
+use App\Service;
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('welcome')->with('services',Service::all());
+})->name('home');
+
+Route::resource('services', 'ServiceController');

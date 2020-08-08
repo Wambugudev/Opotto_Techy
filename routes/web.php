@@ -17,3 +17,4 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('services', 'ServiceController');
+Route::resource('inquiry', 'InquiryController');

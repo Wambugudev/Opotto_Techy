@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Inquiry;
+use App\Service;
 use Illuminate\Http\Request;
 use App\Http\Requests\InquiryRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InquiryFormEmail;
+
 
 class InquiryController extends Controller
 {
@@ -36,6 +40,8 @@ class InquiryController extends Controller
      */
     public function store(InquiryRequest $request)
     {
+
+
         if ($request->description==null) {
             Inquiry::create([
                 'name' => $request->name,
@@ -45,6 +51,13 @@ class InquiryController extends Controller
                 'service' => $request->service,
                 'budget' => $request->budget
             ]);
+
+
+            $request->description = 'No description';
+
+            // Send to the email
+            Mail::to('test2@test.com')->send(new InquiryFormEmail($request));
+
         } else {
             Inquiry::create([
                 'name' => $request->name,
@@ -54,10 +67,13 @@ class InquiryController extends Controller
                 'service' => $request->service,
                 'budget' => $request->budget
             ]);
+
+            // Send to the email
+            Mail::to('test2@test.com')->send(new InquiryFormEmail($request));
         }
 
-
         return redirect(route('home'));
+
     }
 
     /**

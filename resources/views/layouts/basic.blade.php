@@ -115,6 +115,9 @@
             <div class="mt-lg-5">
                 @yield('servicesTable')
             </div>
+            <div class="mt-lg-5">
+                @yield('contact')
+            </div>
         </div>
 
     </body>

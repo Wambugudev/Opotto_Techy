@@ -1,5 +1,6 @@
 @extends('layouts.basic')
 @section('content')
+
 <div class="card mt-lg-5">
     <div class="card-header">
         <div class="row">
@@ -37,7 +38,7 @@
 
               <div class="form-group">
                 <label for="telephoneNumber">Telephone number</label>
-                <input type="number" name="telephoneNumber" id="tellNo" value="{{old('telephoneNumber')}}" placeholder="eg: 07######## (Optional)" class=" custom-control form-control {{$errors->has('telephoneNumber') ? 'is-invalid' : ''}}">
+                <input type="number" name="telephoneNumber" id="telephoneNumber" value="{{old('telephoneNumber')}}" placeholder="eg: 07######## (Optional)" class=" custom-control form-control {{$errors->has('telephoneNumber') ? 'is-invalid' : ''}}">
                 @if ($errors->has('telephoneNumber'))
                 <div class="invalid-feedback">
                             <strong>{{$errors->first('telephoneNumber')}}</strong>
@@ -98,4 +99,52 @@
     </div>
 </div>
 
+@endsection
+
+@section('contact')
+<div class="card-group">
+    <div class="card">
+        <div class=" text-center card-header">
+            <h3>Get in touch</h3>
+            <h4>Ipsum dolor tempus commodo adipiscing</h4>
+        </div>
+        <div class="card-body">
+            <form action="{{route('contact.store')}}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="contactname">Name</label>
+                    <input placeholder="Name" type="text" name="contactname" id="tellNo" value="{{old('contactname')}}"  class="form-control {{$errors->has('contactname') ? 'is-invalid' : ''}}">
+                    @if ($errors->has('contactname'))
+                    <div class="invalid-feedback">
+                                <strong>{{$errors->first('contactname')}}</strong>
+                            </div>
+                    @endif
+                  </div>
+                  <div class="form-group">
+                    <label for="contactemail">Email</label>
+                    <input type="email" name="contactemail" id="contactemail" value="{{old('contactemail')}}" placeholder="Email" class=" form-control {{$errors->has('contactemail') ? 'is-invalid' : ''}}">
+                    @if ($errors->has('contactemail'))
+                    <div class="invalid-feedback">
+                                <strong>{{$errors->first('contactemail')}}</strong>
+                            </div>
+                @endif
+                  </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                <textarea name="message" value="{{old('message')}}" placeholder="Write your message here." id="message" cols="5" rows="5" class=" form-control {{$errors->has('message') ? 'is-invalid' : ''}}">{{old('message')}}</textarea>
+
+                    @if ($errors->has('message'))
+                        <div class="invalid-feedback">
+                                    <strong>{{$errors->first('message')}}</strong>
+                                </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit Message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

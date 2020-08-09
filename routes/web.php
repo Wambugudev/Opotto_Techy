@@ -18,3 +18,4 @@ Route::get('/', function () {
 
 Route::resource('services', 'ServiceController');
 Route::resource('inquiry', 'InquiryController');
+Route::resource('contact', 'ContactFormController');

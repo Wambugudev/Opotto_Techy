@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
 
-            <form action="{{route('services.store')}}" method="post">
+            <form action="{{route('services.store')}}" method="post"  enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -25,6 +25,17 @@
                                     <strong>{{$errors->first('title')}}</strong>
                                 </div>
                     @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="image" class="form-control-file {{$errors->has('image') ? 'is-invalid' : ''}} " value="{{old('image')}}">
+
+                    @if ($errors->has('title'))
+                    <div class="invalid-feedback">
+                                <strong>{{$errors->first('image')}}</strong>
+                            </div>
+                @endif
                 </div>
 
                 <div class="form-group">
@@ -57,6 +68,7 @@
                     <thead>
                         <tr>
                             <th>Service Id</th>
+                            <th>Service Photo</th>
                             <th>Service Title</th>
                             <th>Service Description <span class=" text-info ">(Will appear when hovering)</span></th>
                             <th></th>
@@ -66,16 +78,13 @@
                         @foreach ($services as $service)
                             <tr>
                                 <td>{{$service->id}}</td>
+                                <td><img src="{{$service->image}}" width="80px" height="80px" style="border-radius: 10px" alt="" srcset=""></td>
                                 <td>{{$service->title}}</td>
                                 <td>{{$service->description}}</td>
                                 <td><button onclick="handleDelete({{$service->id}})" class="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td scope="row"></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -116,7 +125,7 @@
         function handleDelete(id)
         {
             var form = document.getElementById('DeleteServiceForm');
-            form.action = '' + id;
+            form.action = '/services/' + id;
             $('#deleteService').modal('show');
         }
     </script>

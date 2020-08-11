@@ -51,7 +51,7 @@ class ContactFormController extends Controller
         // send the email next
 
 
-        Mail::to('test@test.com')->send(new ContactFormMail($request));
+        Mail::to('wambugudev@gmail.com')->send(new ContactFormMail($request));
 
         return redirect(route('home'));
 

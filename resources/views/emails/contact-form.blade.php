@@ -6,8 +6,9 @@
 <strong>Name: </strong>{{$request['contactname']}}
 <strong>Email: </strong>{{$request['contactemail']}}
 
-<h5>The message sent</h5>
-{{$request['contactmessage']}}
+<strong>The message sent</strong>
+
+{{$request['message']}}
 
 Thanks,<br>
 {{ config('app.name') }}

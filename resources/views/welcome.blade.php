@@ -89,7 +89,7 @@
         </header>
     </section>
     @foreach ($services as $service)
-    {{$number = $loop->iteration}}
+    <span class=" invisible ">{{$number = $loop->iteration}}</span>
 
     @if ($number % 2 == 0)
     <section class="section overflow-hidden">

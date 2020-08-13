@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('home', 'HomeController');
 
-use App\Service;
-Route::get('/', function () {
-    return view('welcome')->with('services',Service::all());
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
 
 Route::resource('services', 'ServiceController');
 Route::resource('inquiry', 'InquiryController');

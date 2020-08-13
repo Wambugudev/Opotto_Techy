@@ -56,7 +56,7 @@ class InquiryController extends Controller
             $request->description = 'No description';
 
             // Send to the email
-            Mail::to('wambugudev@gmail.com')->send(new InquiryFormEmail($request));
+            // Mail::to('wambugudev@gmail.com')->send(new InquiryFormEmail($request));
 
         } else {
             Inquiry::create([
@@ -69,7 +69,7 @@ class InquiryController extends Controller
             ]);
 
             // Send to the email
-            Mail::to('wambugudev@gmail.com')->send(new InquiryFormEmail($request));
+            // Mail::to('wambugudev@gmail.com')->send(new InquiryFormEmail($request));
         }
 
         return redirect(route('home'));

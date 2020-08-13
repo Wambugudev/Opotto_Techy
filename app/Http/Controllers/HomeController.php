@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
 use App\Service;
 use Illuminate\Http\Request;
-use App\Http\Requests\ContactFormRequest;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactFormMail;
 
-class ContactFormController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +14,8 @@ class ContactFormController extends Controller
      */
     public function index()
     {
-        //
+        return view('welcome')
+        ->with('services',Service::all());
     }
 
     /**
@@ -37,33 +34,18 @@ class ContactFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactFormRequest $request)
+    public function store(Request $request)
     {
-        // store the data first to the database
-        Contact::create([
-            'contactname' => $request->contactname,
-            'contactemail'=> $request->contactemail,
-            'message' => $request->message,
-        ]);
-
-
-
-        // send the email next
-
-
-        // Mail::to('wambugudev@gmail.com')->send(new ContactFormMail($request));
-
-        return redirect(route('home'));
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contact  $contact
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($id)
     {
         //
     }
@@ -71,10 +53,10 @@ class ContactFormController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contact  $contact
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
         //
     }
@@ -83,10 +65,10 @@ class ContactFormController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contact  $contact
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -94,10 +76,10 @@ class ContactFormController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contact  $contact
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
         //
     }

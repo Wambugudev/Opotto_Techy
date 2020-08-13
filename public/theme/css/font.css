@@ -1,0 +1,24 @@
+@font-face{
+    src: url(theme/fonts/Amatic/AmaticSC-Bold.ttf);
+    font-family: Amatic;
+}
+@font-face{
+    src: url(theme/fonts/Manjari/Manjari-Thin.ttf);
+    font-family: Manjari;
+}
+@font-face{
+    src: url(theme/fonts/Open/OpenSansCondensed-Light.ttf);
+    font-family: OpenSans;
+}@font-face{
+    src: url(theme/fonts/Open/OpenSansCondensed-Bold.ttf);
+    font-family: OpenSansB;
+}
+@font-face{
+    src: url(theme/fonts/Sacramento/Sacramento-Regular.ttf);
+    font-family: Sacramento;
+}
+@font-face{
+    src: url(theme/fonts/Shadows_Into_Light/ShadowsIntoLight-Regular.ttf);
+    font-family: Shadows;
+}
+
